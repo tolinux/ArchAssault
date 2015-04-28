@@ -1,0 +1,16 @@
+You will have to edit /etc/pacman.conf and add the following information to it.
+
+[archassault]
+Server = http://repo.archassault.org/archassault/$repo/os/$arch
+
+Afterwards, run the following sequence in a terminal. You have to be root for running these commands.
+
+pacman-key -r CC1D2606
+pacman-key --lsign CC1D2606
+pacman -Sy --noconfirm archassault-keyring archassault-mirrorlist
+
+EDIT: you can then add the following line to your /etc/pacman.conf and replace the above location for archassault.
+
+Include = /etc/pacman.d/archassault-mirrorlist
+
+archassault-mirrorlist will allow you to choose a mirror closer to your location.
